@@ -13,7 +13,7 @@ import { CheckIcon, XIcon } from 'lucide-react';
 
 export const PlanCard = ({ plan }: { plan: Plan }) => {
   return (
-    <Card className="max-w-md shadow-lg hover:scale-[102%] hover:shadow-primary/40 transition-all shadow-primary/0 flex flex-col items-stretch justify-start">
+    <Card className="max-w-md shadow-lg hover:shadow-primary/40 transition-all shadow-primary/0 flex flex-col items-stretch justify-start">
       <CardHeader className="space-y-6">
         <CardTitle className="text-lg text-foreground/60">
           {plan.name}
