@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Pacifico, Quicksand } from 'next/font/google';
 import './globals.css';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const pacifico = Pacifico({
   subsets: ['latin'],
@@ -19,17 +20,24 @@ export const metadata: Metadata = {
   description: 'Descripcion a poner',
 };
 
-export default function RootLayout({
+export default function BaseLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${pacifico.variable} ${quicksand.variable} antialiased`}
-      >
-        {children}
+    <html
+      lang="en"
+      suppressHydrationWarning
+    >
+      <body className={`${pacifico.className} ${quicksand.className}`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
