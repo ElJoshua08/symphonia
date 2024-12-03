@@ -3,6 +3,7 @@ export interface Plan {
   description: string;
   price: Price;
   features: Feature[];
+  buy?: string;
 }
 
 export interface Price {
