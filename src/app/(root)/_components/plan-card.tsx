@@ -71,7 +71,7 @@ export const PlanCard = ({ plan }: { plan: Plan }) => {
       <CardFooter>
         <Button
           variant="outline"
-          className="w-full hover:bg-primary hover:text-primary-foreground"
+          className="w-full hover:bg-primary hover:text-primary-foreground  "
         >
           {plan.buy || 'Empieza ahora'}
         </Button>

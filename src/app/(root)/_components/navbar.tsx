@@ -1,10 +1,11 @@
 'use client';
 
 import { Button, buttonVariants } from '@/components/ui/button';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 export const Navbar = () => {
   const pathname = usePathname();
+  const router = useRouter();
 
   const items = [
     { name: 'Inicio', href: '/' },
@@ -39,7 +40,7 @@ export const Navbar = () => {
       </ul>
 
       {/* CTA Button */}
-      <Button>Empieza ya</Button>
+      <Button onClick={() => router.push('/login')}>Empieza ya</Button>
     </nav>
   );
 };
