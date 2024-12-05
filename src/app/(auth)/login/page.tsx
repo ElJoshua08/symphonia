@@ -93,6 +93,10 @@ export default function LoginPage() {
           </Button>
         </CardFooter>
       </Card>
+
+      <Link href="/register" className='mt-5'>
+        <Label variant="link">¿Aun no tienes una cuenta?</Label>
+      </Link>
     </main>
   );
 }
