@@ -9,7 +9,7 @@ export const Navbar = () => {
 
   const items = [
     { name: 'Inicio', href: '/' },
-    { name: 'Planes', href: '/planes' },
+    { name: 'Planes', href: '/pricing' },
     { name: 'Sobre nosotros', href: '/sobre-nostros' },
   ];
 

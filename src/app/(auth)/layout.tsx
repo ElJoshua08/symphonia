@@ -1,4 +1,5 @@
 import { ThemeToggle } from '@/components/theme-toggle';
+import FlickeringGrid from '@/components/ui/flickering-grid';
 
 export default function RootLayout({
   children,
@@ -10,7 +11,14 @@ export default function RootLayout({
       {/*  Decoration */}
       <div className="fixed blur-[120px] size-[250px] rounded-full bg-primary/50 top-[200px] left-[230px]" />
       <div className="fixed blur-[120px] size-[250px] rounded-full bg-primary/50 bottom-[200px] right-[230px]" />
-      <div className="fixed h-full w-full bg-[radial-gradient(#b9caed_1px,transparent_1px)] dark:bg-[radial-gradient(#121e36_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] -z-10" />
+      <FlickeringGrid
+        className="fixed top-0 left-0 w-full h-full -z-10"
+        color="#47198e"
+        squareSize={12}
+        gridGap={2}
+        maxOpacity={0.18}
+        flickerChance={0.07}
+      />
 
       {/* Content */}
       {children}

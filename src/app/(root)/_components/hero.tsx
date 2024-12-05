@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { FlipWords } from '@/components/ui/flip-words';
 
 export const Hero = () => {
   const words = [
@@ -17,15 +17,17 @@ export const Hero = () => {
     'innovación',
   ];
 
-  const [word, setWord] = useState(words[0]);
-
   return (
     <div className="flex flex-row justify-between items-center w-full">
       {/* Slogan y Text */}
       <div className="flex flex-col items-start justify-start">
-        <h1 className="text-6xl font-bold text-left text-foreground/80">
-          Con Symphonia a tu lado,
-          potencia tu <span className="font-pacifico text-primary">{word}</span>
+        <h1 className="text-6xl font-bold text-left text-foreground">
+          Con Symphonia a tu lado, potencia tu{' '}
+          <FlipWords
+            words={words}
+            className="font-pacifico"
+            spanClassName="text-primary"
+          />
         </h1>
         <p className="text-2xl text-foreground/60 max-w-[90ch] text-balance mt-4">
           Descubre cómo Symphonia te ayuda a desbloquear todo tu potencial
