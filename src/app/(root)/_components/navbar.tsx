@@ -14,7 +14,7 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className="flex flex-row justify-between items-center w-full p-4">
+    <nav className="sticky z-50 top-0 flex flex-row justify-between items-center w-full p-4 after:left-0 after:absolute after:content-[''] after:w-full after:h-full after:-z-10 after:backdrop-blur-xl after:[mask-image:linear-gradient(to_bottom,black_10%,transparent_70%)]">
       {/* Logo */}
       <h1 className="text-2xl font-bold tracking-wide">LOGO</h1>
 
@@ -24,7 +24,11 @@ export const Navbar = () => {
           const isActive = item.href === pathname;
 
           return (
-            <li key={item.name}>
+            <li
+              key={item.name}
+              className="relative"
+            >
+              <span className={`w-full h-1 rounded-full bg-primary absolute left-0 bottom-0 transition-transform duration-100 ${isActive ? "scale-100" : "scale-0"}`} />
               <a
                 href={item.href}
                 className={buttonVariants({
