@@ -8,9 +8,17 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { InputPassword } from '@/components/ui/input-password';
 import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator';
 import { loginSchema, loginType } from '@/lib/schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
@@ -19,6 +27,11 @@ import { useForm } from 'react-hook-form';
 export default function LoginPage() {
   const form = useForm<loginType>({
     resolver: zodResolver(loginSchema),
+    values: {
+      email: '',
+      password: '',
+    },
+    mode: 'onTouched',
   });
 
   const onSubmit = (data: loginType) => {
@@ -29,20 +42,21 @@ export default function LoginPage() {
     <main className="grow flex w-full flex-col justify-center items-center bg-transparent">
       <Card>
         <CardHeader>
-          <CardTitle>Inicia Sesión</CardTitle>
+          <CardTitle className="text-xl">Inicia Sesión</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form className="space-y-6">
+            <form className="space-y-8">
               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="Email"
+                        placeholder="eljokas@ejemplo.com"
                         autoComplete="email"
                       />
                     </FormControl>
@@ -55,10 +69,11 @@ export default function LoginPage() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
+                    <FormLabel>Contraseña</FormLabel>
                     <FormControl>
-                      <Input
+                      <InputPassword
                         {...field}
-                        placeholder="Contraseña"
+                        placeholder="Min. 8 caracteres"
                         autoComplete="current-password"
                       />
                     </FormControl>
@@ -68,9 +83,9 @@ export default function LoginPage() {
             </form>
           </Form>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex flex-row gap-x-8 items-end justify-between">
           <Link href="/forgot-password">
-            <Label>¿Olvidaste tu contraseña?</Label>
+            <Label variant="link">¿Olvidaste tu contraseña?</Label>
           </Link>
 
           <Button onClick={() => form.handleSubmit(onSubmit)}>
