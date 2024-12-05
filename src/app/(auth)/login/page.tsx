@@ -18,7 +18,6 @@ import {
 import { Input } from '@/components/ui/input';
 import { InputPassword } from '@/components/ui/input-password';
 import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
 import { loginSchema, loginType } from '@/lib/schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';

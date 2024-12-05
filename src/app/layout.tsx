@@ -17,7 +17,10 @@ const quicksand = Quicksand({
 
 export const metadata: Metadata = {
   title: 'Symphonia',
-  description: 'Descripcion a poner',
+  description: 'Potencia tu música de la mano de Symphonia',
+  icons: {
+    icon: '/logo.png',
+  },
 };
 
 export default function BaseLayout({
