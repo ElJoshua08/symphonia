@@ -14,6 +14,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { InputPassword } from '@/components/ui/input-password';
@@ -59,6 +60,7 @@ export default function LoginPage() {
                         autoComplete="email"
                       />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -76,6 +78,7 @@ export default function LoginPage() {
                         autoComplete="current-password"
                       />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -93,7 +96,10 @@ export default function LoginPage() {
         </CardFooter>
       </Card>
 
-      <Link href="/register" className='mt-5'>
+      <Link
+        href="/register"
+        className="mt-5"
+      >
         <Label variant="link">¿Aun no tienes una cuenta?</Label>
       </Link>
     </main>
