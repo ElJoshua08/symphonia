@@ -38,7 +38,7 @@ const BentoCard = ({
   Icon: any;
   description: string;
   href: string;
-  cta: string;w
+  cta: string;
 }) => (
   <div
     key={name}
