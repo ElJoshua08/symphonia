@@ -1,5 +1,4 @@
 import { buttonVariants } from '@/components/ui/button';
-import { Hero } from './_components/hero';
 import Link from 'next/link';
 
 export default function Home() {
