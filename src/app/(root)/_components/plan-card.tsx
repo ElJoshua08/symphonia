@@ -14,7 +14,7 @@ import { CheckIcon, XIcon } from 'lucide-react';
 
 export const PlanCard = ({ plan }: { plan: Plan }) => {
   return (
-    <Card className="w-full sm:max-w-md shadow-lg hover:shadow-primary/60 transition-all shadow-primary/10 flex flex-col items-stretch justify-start relative group overflow-clip">
+    <Card className="w-full sm:max-w-md transition-all flex flex-col items-stretch justify-start relative group overflow-clip">
       <CardHeader className="space-y-6">
         <CardTitle className="text-lg text-foreground/60">
           {plan.name}
@@ -32,13 +32,13 @@ export const PlanCard = ({ plan }: { plan: Plan }) => {
             {plan.price.units}
           </span>
         </h1>
-        <Separator />
+        <Separator className="hidden md:block" />
         <CardDescription className="text-lg leading-tight !mt-2">
           {plan.description}
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col justify-start items-center grow">
-        <ScrollArea className="h-72 pr-4">
+      <CardContent className="flex-col justify-start items-center grow hidden md:block">
+        <ScrollArea className="h-72 pr-4 ">
           <ul className="flex flex-col gap-y-4 max-h-64">
             {plan.features &&
               plan.features.map((feature) => (
@@ -73,9 +73,9 @@ export const PlanCard = ({ plan }: { plan: Plan }) => {
       </CardContent>
       <CardFooter>
         <Button
-          variant="default"
+          variant={plan.name === 'Pro' ? 'default' : 'outline'}
           size="lg"
-          className="w-full hover:text-primary-foreground h-auto py-2 text-lg"
+          className="w-full h-auto py-2 text-lg"
         >
           {plan.buy || 'Empieza ahora'}
         </Button>

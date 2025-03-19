@@ -41,14 +41,16 @@ export default function LoginPage() {
   return (
     <main className="grow flex w-full flex-row justify-normal items-stretch">
       {/* Decoration and phrase */}
-      <section className="w-full bg-primary hidden lg:flex justify-center items-start flex-col px-16">
-        <h1 className="text-secondary text-7xl text-center text-balance mt-10 font-header">
-          En cualquier lugar, con cualquier persona
-        </h1>
+      <section className="w-full bg-primary hidden lg:flex justify-center items-start flex-col px-16  relative overflow-y-clip">
+        <div className="flex justify-center items-center z-10 bg-primary">
+          <h1 className="text-secondary text-7xl text-center text-balance mt-10 font-header">
+            En cualquier lugar, con cualquier persona
+          </h1>
+        </div>
+        <div className="absolute top-0 right-0 h-[calc(100%+50px)] w-52 rotate-3 bg-primary shadow-lg shadow-black dark:shadow-primary translate-x-1/4 -translate-y-8 hidden lg:block -z-10" />
       </section>
       <section className="flex flex-col justify-center items-center w-full relative overflow-y-clip">
-        <div className="absolute top-0 left-0 h-[calc(100%+50px)] w-52 rotate-3 bg-background -translate-x-10 hidden lg:block" />
-        <Card className='z-50'>
+        <Card className="z-50">
           <CardHeader>
             <CardTitle className="text-xl">Inicia Sesión</CardTitle>
           </CardHeader>
