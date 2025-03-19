@@ -8,15 +8,16 @@ body {
 
 @layer base {
   :root {
-    --background: 31 73% 95%;
+    --background: 31 30% 97%;
     --foreground: 31 5% 0%;
-    --card: 31 50% 90%;
+    --card: 31 35% 93%;
     --card-foreground: 31 5% 10%;
+    --card-shadow:  31 15% 75%;
     --popover: 31 73% 95%;
     --popover-foreground: 31 95% 0%;
     --primary: 31 45.1% 80%;
     --primary-foreground: 0 0% 0%;
-    --secondary: 31 30% 70%;
+    --secondary: 31 40% 50%;
     --secondary-foreground: 0 0% 0%;
     --muted: -7 30% 85%;
     --muted-foreground: 31 5% 35%;
@@ -27,13 +28,14 @@ body {
     --border: 31 30% 50%;
     --input: 31 30% 18%;
     --ring: 31 45.1% 80%;
-    --radius: 0.50rem;
+    --radius: 0.5rem;
   }
   .dark {
     --background: 31 50% 5%;
     --foreground: 31 5% 90%;
     --card: 31 50% 0%;
     --card-foreground: 31 5% 90%;
+    --card-shadow: 31 15% 10%;
     --popover: 31 50% 5%;
     --popover-foreground: 31 5% 90%;
     --primary: 31 45.1% 80%;
@@ -58,5 +60,11 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .shadow-card {
+    box-shadow: 12px 12px 15px hsl(var(--card-shadow));
   }
 }

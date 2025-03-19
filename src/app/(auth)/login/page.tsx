@@ -31,7 +31,7 @@ export default function LoginPage() {
       email: '',
       password: '',
     },
-    mode: 'onTouched',
+    mode: 'onChange',
   });
 
   const onSubmit = (data: loginType) => {
@@ -41,16 +41,16 @@ export default function LoginPage() {
   return (
     <main className="grow flex w-full flex-row justify-normal items-stretch">
       {/* Decoration and phrase */}
-      <section className="w-full bg-foreground hidden md:flex justify-center items-start flex-col px-16">
-        <h1 className="text-background text-7xl text-center text-balance mt-10 font-header">
+      <section className="w-full bg-primary hidden lg:flex justify-center items-start flex-col px-16">
+        <h1 className="text-secondary text-7xl text-center text-balance mt-10 font-header">
           En cualquier lugar, con cualquier persona
         </h1>
       </section>
       <section className="flex flex-col justify-center items-center w-full relative overflow-y-clip">
         <div className="absolute top-0 left-0 h-[calc(100%+50px)] w-52 rotate-3 bg-background -translate-x-10 hidden lg:block" />
-        <Card>
+        <Card className='z-50'>
           <CardHeader>
-            <CardTitle className="text-xl font-header">Inicia Sesión</CardTitle>
+            <CardTitle className="text-xl">Inicia Sesión</CardTitle>
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -93,12 +93,12 @@ export default function LoginPage() {
               </form>
             </Form>
           </CardContent>
-          <CardFooter className="flex flex-row gap-x-8 items-end justify-between">
+          <CardFooter className="flex flex-row gap-x-8 items-end justify-between mt-4">
             <Link href="/forgot-password">
               <Label variant="link">¿Olvidaste tu contraseña?</Label>
             </Link>
 
-            <Button onClick={() => form.handleSubmit(onSubmit)}>
+            <Button onClick={() => form.handleSubmit(onSubmit)()}>
               Iniciar Sesión
             </Button>
           </CardFooter>

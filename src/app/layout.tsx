@@ -40,7 +40,7 @@ export default function BaseLayout({
       suppressHydrationWarning
     >
       <body
-        className={`${fontHeader.className} ${fontBody.className} antialiased`}
+        className={`${fontHeader.variable} ${fontBody.className}`}
       >
         <ThemeProvider
           attribute="class"

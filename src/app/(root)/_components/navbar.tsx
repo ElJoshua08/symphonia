@@ -1,7 +1,6 @@
 'use client';
 
 import { Button, buttonVariants } from '@/components/ui/button';
-import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 
 export const Navbar = () => {
@@ -15,16 +14,9 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky z-50 top-0 flex flex-row justify-between items-center w-full px-6 py-4">
+    <nav className="z-50 md:sticky top-0 flex flex-row justify-between items-center w-full px-6 py-4 bg-background/50 backdrop-blur-lg overflow-hidden shrink-0">
       {/* Logo */}
       <header className="flex flex-row items-center justify-center font-header">
-        <Image
-          width={96}
-          height={96}
-          src="/logo.png"
-          alt="Logo de Symphonia"
-          className="size-12 object-contain"
-        />
         <h1 className="text-2xl text-primary font-pacifico">Symphonia</h1>
       </header>
 

@@ -14,7 +14,7 @@ export default function RootLayout({
       {/* Content */}
       {children}
 
-      <ThemeToggle className="fixed bottom-4 left-4" />
+      <ThemeToggle className="fixed bottom-4 right-4" />
     </main>
   );
 }
