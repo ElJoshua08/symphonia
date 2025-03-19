@@ -1,4 +1,3 @@
-import { BorderBeam } from '@/components/ui/border-beam';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -15,7 +14,7 @@ import { CheckIcon, XIcon } from 'lucide-react';
 
 export const PlanCard = ({ plan }: { plan: Plan }) => {
   return (
-    <Card className="w-full sm:max-w-md shadow-lg hover:shadow-primary/40 transition-all shadow-primary/0 flex flex-col items-stretch justify-start relative group overflow-clip">
+    <Card className="w-full sm:max-w-md shadow-lg hover:shadow-primary/60 transition-all shadow-primary/10 flex flex-col items-stretch justify-start relative group overflow-clip">
       <CardHeader className="space-y-6">
         <CardTitle className="text-lg text-foreground/60">
           {plan.name}
@@ -52,7 +51,7 @@ export const PlanCard = ({ plan }: { plan: Plan }) => {
                       <CheckIcon
                         size={16}
                         strokeWidth={4}
-                        className="text-white"
+                        className="text-background"
                       />
                     </span>
                   ) : (
@@ -74,16 +73,13 @@ export const PlanCard = ({ plan }: { plan: Plan }) => {
       </CardContent>
       <CardFooter>
         <Button
-          variant="outline"
-          className="w-full hover:bg-primary hover:text-primary-foreground  "
+          variant="default"
+          size="lg"
+          className="w-full hover:text-primary-foreground h-auto py-2 text-lg"
         >
           {plan.buy || 'Empieza ahora'}
         </Button>
       </CardFooter>
-      <BorderBeam
-        delay={Math.random() * 2 + 5}
-        duration={Math.random() * 6 + 3}
-      />
     </Card>
   );
 };

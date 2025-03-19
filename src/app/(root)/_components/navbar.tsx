@@ -17,7 +17,7 @@ export const Navbar = () => {
   return (
     <nav className="sticky z-50 top-0 flex flex-row justify-between items-center w-full px-6 py-4">
       {/* Logo */}
-      <header className="flex flex-row items-center justify-center">
+      <header className="flex flex-row items-center justify-center font-header">
         <Image
           width={96}
           height={96}
@@ -41,7 +41,7 @@ export const Navbar = () => {
               <a
                 href={item.href}
                 className={buttonVariants({
-                  variant: isActive ? 'default' : 'ghost',
+                  variant: isActive ? 'secondary' : 'ghost',
                   className: 'cursor-pointer',
                 })}
               >

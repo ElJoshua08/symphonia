@@ -4,10 +4,10 @@ import { Quicksand } from 'next/font/google';
 import LocalFont from 'next/font/local';
 import './globals.css';
 
-const headerFont = LocalFont({
+const fontHeader = LocalFont({
   src: [
     {
-      path: '/public/fonts/FeelingPassionate.ttf',
+      path: '../fonts/FeelingPassionate.ttf',
       weight: '400',
       style: 'normal',
     },
@@ -15,7 +15,7 @@ const headerFont = LocalFont({
   variable: '--font-header',
 });
 
-const bodyFont = Quicksand({
+const fontBody = Quicksand({
   subsets: ['latin'],
   weight: 'variable',
   variable: '--font-body',
@@ -23,7 +23,7 @@ const bodyFont = Quicksand({
 
 export const metadata: Metadata = {
   title: 'Symphonia',
-  description: '',
+  description: 'Conecta con la musica, conecta con el talento.',
   icons: {
     icon: '/logo.png',
   },
@@ -40,7 +40,7 @@ export default function BaseLayout({
       suppressHydrationWarning
     >
       <body
-        className={`${headerFont.className} ${bodyFont.className} antialiased`}
+        className={`${fontHeader.className} ${fontBody.className} antialiased`}
       >
         <ThemeProvider
           attribute="class"

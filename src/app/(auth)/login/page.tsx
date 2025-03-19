@@ -42,14 +42,15 @@ export default function LoginPage() {
     <main className="grow flex w-full flex-row justify-normal items-stretch">
       {/* Decoration and phrase */}
       <section className="w-full bg-foreground hidden md:flex justify-center items-start flex-col px-16">
-        <h1 className='text-background ml-10 text-4xl font-thin font-pacifico'>Symphonia.</h1>
-        <h1 className='text-background text-7xl text-center text-balance mt-10'>En cualquier lugar, con cualquier persona</h1>
+        <h1 className="text-background text-7xl text-center text-balance mt-10 font-header">
+          En cualquier lugar, con cualquier persona
+        </h1>
       </section>
       <section className="flex flex-col justify-center items-center w-full relative overflow-y-clip">
         <div className="absolute top-0 left-0 h-[calc(100%+50px)] w-52 rotate-3 bg-background -translate-x-10 hidden lg:block" />
         <Card>
           <CardHeader>
-            <CardTitle className="text-xl">Inicia Sesión</CardTitle>
+            <CardTitle className="text-xl font-header">Inicia Sesión</CardTitle>
           </CardHeader>
           <CardContent>
             <Form {...form}>
