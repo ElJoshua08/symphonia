@@ -1,23 +1,29 @@
-import type { Metadata } from 'next';
-import { Pacifico, Quicksand } from 'next/font/google';
-import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
+import type { Metadata } from 'next';
+import { Quicksand } from 'next/font/google';
+import LocalFont from 'next/font/local';
+import './globals.css';
 
-const pacifico = Pacifico({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-pacifico',
+const headerFont = LocalFont({
+  src: [
+    {
+      path: '/public/fonts/FeelingPassionate.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-header',
 });
 
-const quicksand = Quicksand({
+const bodyFont = Quicksand({
   subsets: ['latin'],
   weight: 'variable',
-  variable: '--font-quicksand',
+  variable: '--font-body',
 });
 
 export const metadata: Metadata = {
   title: 'Symphonia',
-  description: 'Potencia tu música de la mano de Symphonia',
+  description: '',
   icons: {
     icon: '/logo.png',
   },
@@ -33,7 +39,9 @@ export default function BaseLayout({
       lang="en"
       suppressHydrationWarning
     >
-      <body className={`${pacifico.className} ${quicksand.className}`}>
+      <body
+        className={`${headerFont.className} ${bodyFont.className} antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

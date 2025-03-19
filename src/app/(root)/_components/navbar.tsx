@@ -15,11 +15,17 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky z-50 top-0 flex flex-row justify-between items-center w-full p-4 after:left-0 after:absolute after:content-[''] after:w-full after:h-full after:-z-10 after:backdrop-blur-xl after:[mask-image:linear-gradient(to_bottom,black_10%,transparent_70%)]">
+    <nav className="sticky z-50 top-0 flex flex-row justify-between items-center w-full px-6 py-4">
       {/* Logo */}
-      <header className='flex flex-row items-center justify-center'>
-        <Image width={96} height={96} src="/logo.png" alt="Logo de Symphonia" className='size-12 object-contain' />
-        <h1 className='text-2xl text-primary font-pacifico'>Symphonia</h1>
+      <header className="flex flex-row items-center justify-center">
+        <Image
+          width={96}
+          height={96}
+          src="/logo.png"
+          alt="Logo de Symphonia"
+          className="size-12 object-contain"
+        />
+        <h1 className="text-2xl text-primary font-pacifico">Symphonia</h1>
       </header>
 
       {/* Menu */}
@@ -32,11 +38,10 @@ export const Navbar = () => {
               key={item.name}
               className="relative"
             >
-              <span className={`w-full h-1 rounded-full bg-primary absolute left-0 bottom-0 transition-transform duration-100 ${isActive ? "scale-100" : "scale-0"}`} />
               <a
                 href={item.href}
                 className={buttonVariants({
-                  variant: isActive ? 'secondary' : 'ghost',
+                  variant: isActive ? 'default' : 'ghost',
                   className: 'cursor-pointer',
                 })}
               >

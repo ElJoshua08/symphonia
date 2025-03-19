@@ -39,69 +39,77 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="grow flex w-full flex-col justify-center items-center bg-transparent">
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-xl">Inicia Sesión</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form className="space-y-8">
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        placeholder="eljokas@ejemplo.com"
-                        autoComplete="email"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+    <main className="grow flex w-full flex-row justify-normal items-stretch">
+      {/* Decoration and phrase */}
+      <section className="w-full bg-foreground hidden md:flex justify-center items-start flex-col px-16">
+        <h1 className='text-background ml-10 text-4xl font-thin font-pacifico'>Symphonia.</h1>
+        <h1 className='text-background text-7xl text-center text-balance mt-10'>En cualquier lugar, con cualquier persona</h1>
+      </section>
+      <section className="flex flex-col justify-center items-center w-full relative overflow-y-clip">
+        <div className="absolute top-0 left-0 h-[calc(100%+50px)] w-52 rotate-3 bg-background -translate-x-10 hidden lg:block" />
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-xl">Inicia Sesión</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form className="space-y-8">
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          placeholder="symphonia@startinnova.com"
+                          autoComplete="email"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Contraseña</FormLabel>
-                    <FormControl>
-                      <InputPassword
-                        {...field}
-                        placeholder="Min. 8 caracteres"
-                        autoComplete="current-password"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </form>
-          </Form>
-        </CardContent>
-        <CardFooter className="flex flex-row gap-x-8 items-end justify-between">
-          <Link href="/forgot-password">
-            <Label variant="link">¿Olvidaste tu contraseña?</Label>
-          </Link>
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Contraseña</FormLabel>
+                      <FormControl>
+                        <InputPassword
+                          {...field}
+                          placeholder="Min. 8 caracteres"
+                          autoComplete="current-password"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </form>
+            </Form>
+          </CardContent>
+          <CardFooter className="flex flex-row gap-x-8 items-end justify-between">
+            <Link href="/forgot-password">
+              <Label variant="link">¿Olvidaste tu contraseña?</Label>
+            </Link>
 
-          <Button onClick={() => form.handleSubmit(onSubmit)}>
-            Iniciar Sesión
-          </Button>
-        </CardFooter>
-      </Card>
+            <Button onClick={() => form.handleSubmit(onSubmit)}>
+              Iniciar Sesión
+            </Button>
+          </CardFooter>
+        </Card>
 
-      <Link
-        href="/register"
-        className="mt-5"
-      >
-        <Label variant="link">¿Aun no tienes una cuenta?</Label>
-      </Link>
+        <Link
+          href="/register"
+          className="mt-5"
+        >
+          <Label variant="link">¿Aun no tienes una cuenta?</Label>
+        </Link>
+      </section>
     </main>
   );
 }
