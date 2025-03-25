@@ -66,7 +66,7 @@ export default function LoginPage() {
                       <FormControl>
                         <Input
                           {...field}
-                          placeholder="symphonia@startinnova.com"
+                          placeholder="symphonia@startinnova.es"
                           autoComplete="email"
                         />
                       </FormControl>
