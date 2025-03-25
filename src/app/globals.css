@@ -26,7 +26,7 @@ body {
     --destructive: 0 73% 30%;
     --destructive-foreground: 31 5% 90%;
     --border: 31 30% 50%;
-    --input: 31 30% 18%;
+    --input: 31 5% 78%;
     --ring: 31 45.1% 80%;
     --radius: 0.5rem;
   }
@@ -48,7 +48,7 @@ body {
     --accent-foreground: 31 5% 90%;
     --destructive: 0 73% 30%;
     --destructive-foreground: 31 5% 90%;
-    --border: 31 30% 18%;
+    --border: 31 10% 8%;
     --input: 31 30% 18%;
     --ring: 31 45.1% 80%;
   }

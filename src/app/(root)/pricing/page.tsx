@@ -10,7 +10,7 @@ export default function PlanesPage() {
         </h1>
       </div>
 
-      <div className="flex flex-row gap-x-8 flex-wrap gap-y-8 items-start justify-center">
+      <div className="flex flex-row gap-x-16 flex-wrap gap-y-8 items-start justify-center">
         {plans.map((plan) => (
           <PlanCard
             key={plan.name}

@@ -1,7 +1,13 @@
 'use client';
 
 import { Button, buttonVariants } from '@/components/ui/button';
-import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/ui/drawer';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -81,12 +87,18 @@ const NavbarDrawer = ({
     <Drawer
       open={open}
       onOpenChange={setOpen}
-      direction='top'
+      direction="top"
     >
       <DrawerTrigger className={className}>
         <HamburgerMenuIcon />
       </DrawerTrigger>
       <DrawerContent className="flex flex-col gap-y-4 top-0">
+        ç
+        <DrawerHeader>
+          <DrawerTitle className="text-2xl text-primary font-pacifico">
+            Symphonia
+          </DrawerTitle>
+        </DrawerHeader>
         {items.map((item) => {
           return (
             <li
