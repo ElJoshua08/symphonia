@@ -1,13 +1,15 @@
-import { Footer } from "./_components/footer";
-import { Hero } from "./_components/hero";
-import { Problem } from "./_components/problem";
-import { Solution } from "./_components/solution";
+import { Footer } from './_components/footer';
+import { Hero } from './_components/hero';
+import { Problem } from './_components/problem';
+import { Solution } from './_components/solution';
+import { WhyAreWeDifferent } from './_components/why-are-we-different';
 
 export default function Home() {
   return (
-    <main className="grow flex w-full flex-col justify-start items-center bg-transparent py-36 px-8">
-
+    <main className="flex w-full grow flex-col items-center justify-start bg-transparent px-8 py-36">
       <Hero />
+
+      <WhyAreWeDifferent />
 
       <Problem />
 
