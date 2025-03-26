@@ -20,9 +20,10 @@ import { Input } from '@/components/ui/input';
 import { InputPassword } from '@/components/ui/input-password';
 import { Label } from '@/components/ui/label';
 import { registerSchema, registerType } from '@/lib/schemas';
-import { register } from '@/services/auth.service';
+import { register, resendEmail } from '@/services/auth.service';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { useForm, UseFormReturn } from 'react-hook-form';
 import { toast } from 'sonner';
 
@@ -170,14 +171,38 @@ const RegisterForm = ({ form }: { form: UseFormReturn<registerType> }) => {
       </form>
     </Form>
   );
-};
 
+};
 const SuccessCard = ({ name, email }: { name: string; email: string }) => {
+  const cooldownTime = 30; // Segundos
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [remainingTime, setRemainingTime] = useState(0);
+
+  useEffect(() => {
+    if (remainingTime > 0) {
+      const timer = setTimeout(() => setRemainingTime(remainingTime - 1), 1000);
+      return () => clearTimeout(timer);
+    } else {
+      setIsDisabled(false);
+    }
+  }, [remainingTime]);
+
+  const handleResendEmail = () => {
+    if (isDisabled) {
+      toast.error(`Espera ${remainingTime} segundos antes de reenviar.`);
+      return;
+    }
+
+    resendEmail(email);
+    setIsDisabled(true);
+    setRemainingTime(cooldownTime);
+  };
+
   return (
     <>
       {/* Overlay */}
       <div className="absolute left-0 top-0 z-10 h-full w-full bg-black/50" />
-      <Card className="absolute left-1/2 top-1/2 z-[100] -translate-x-1/2 -translate-y-1/2 shadow-card-shadow/50 shadow-md max-w-96">
+      <Card className="shadow-card-shadow/50 absolute left-1/2 top-1/2 z-[100] max-w-96 -translate-x-1/2 -translate-y-1/2 shadow-md">
         <CardHeader>
           <CardTitle className="text-2xl">
             Hola {name}, Bienvenido a Symphonia!
@@ -186,12 +211,16 @@ const SuccessCard = ({ name, email }: { name: string; email: string }) => {
         <CardContent>
           <p>
             Para completar tu registro, por favor haz click en el enlace que ha
-            sido enviado a tu email. 
+            sido enviado a tu email.
           </p>
         </CardContent>
         <CardFooter>
-          <Button className='w-full' onClick={() => resendEmail(email)}>
-            Reenviar Email
+          <Button
+            disabled={isDisabled}
+            className="w-full"
+            onClick={handleResendEmail}
+          >
+            {isDisabled ? `Reenviar en ${remainingTime}s` : 'Reenviar Email'}
           </Button>
         </CardFooter>
       </Card>
