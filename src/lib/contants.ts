@@ -1,5 +1,3 @@
-import { Plan } from './interfaces';
-
 export const plans = [
   {
     name: 'Hobby',
@@ -131,4 +129,4 @@ export const plans = [
     ],
     buy: 'Crece con nosotros',
   },
-] as Plan[];
+] as const;
