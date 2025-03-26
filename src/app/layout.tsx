@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Quicksand } from 'next/font/google';
 import LocalFont from 'next/font/local';
 import './globals.css';
+import { Toaster } from '@/components/ui/sonner';
 
 const fontHeader = LocalFont({
   src: [
@@ -46,7 +47,8 @@ export default function BaseLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
-        >
+          >
+          <Toaster />
           {children}
         </ThemeProvider>
       </body>

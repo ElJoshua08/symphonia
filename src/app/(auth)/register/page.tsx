@@ -20,9 +20,11 @@ import { Input } from '@/components/ui/input';
 import { InputPassword } from '@/components/ui/input-password';
 import { Label } from '@/components/ui/label';
 import { registerSchema, registerType } from '@/lib/schemas';
+import { register } from '@/services/auth.service';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { useForm, UseFormReturn } from 'react-hook-form';
+import { toast } from 'sonner';
 
 export default function RegisterPage() {
   const form = useForm<registerType>({
@@ -36,9 +38,14 @@ export default function RegisterPage() {
     mode: 'onChange',
   });
 
-  const onSubmit = (data: registerType) => {
-    console.log(data);
-  };
+  async function onSubmit({ name, email, password }: registerType) {
+    const { error } = await register(name, email, password);
+
+    if (error) {
+      toast.error(error);
+      return;
+    }
+  }
 
   return (
     <main className="flex w-full grow flex-row items-stretch justify-normal">
@@ -50,7 +57,7 @@ export default function RegisterPage() {
       )}
 
       <section className="relative flex w-full flex-col items-center justify-center overflow-y-clip">
-        <Card className="z-50">
+        <Card>
           <CardHeader>
             <CardTitle className="text-xl">Registrate en Symphonia</CardTitle>
           </CardHeader>
@@ -75,7 +82,7 @@ export default function RegisterPage() {
       {/* Decoration and phrase */}
       <section className="relative hidden w-full flex-col items-start justify-center overflow-y-clip bg-primary px-16 lg:flex">
         <div className="absolute left-0 top-0 -z-10 hidden h-[calc(100%+50px)] w-52 -translate-x-1/4 -translate-y-8 -rotate-3 bg-primary shadow-lg shadow-black dark:shadow-primary lg:block" />
-        <div className="z-10 flex items-center justify-center bg-primary">
+        <div className="flex items-center justify-center bg-primary">
           <h1 className="mt-10 text-balance text-center font-header text-7xl text-secondary">
             En cualquier lugar, En cualquier momento.
           </h1>
@@ -144,7 +151,7 @@ const RegisterForm = ({ form }: { form: UseFormReturn<registerType> }) => {
 
           <FormField
             control={form.control}
-            name="password"
+            name="confirmPassword"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Confirma tu contraseña</FormLabel>
@@ -169,19 +176,24 @@ const SuccessCard = ({ name, email }: { name: string; email: string }) => {
   return (
     <>
       {/* Overlay */}
-      <div className="absolute left-0 top-0 -z-10 hidden h-full w-full bg-black/50" />
-      <Card className="z-50">
+      <div className="absolute left-0 top-0 z-10 h-full w-full bg-black/50" />
+      <Card className="absolute left-1/2 top-1/2 z-[100] -translate-x-1/2 -translate-y-1/2 shadow-card-shadow/50 shadow-md max-w-96">
         <CardHeader>
-          <CardTitle className="text-xl">
+          <CardTitle className="text-2xl">
             Hola {name}, Bienvenido a Symphonia!
           </CardTitle>
         </CardHeader>
         <CardContent>
           <p>
             Para completar tu registro, por favor haz click en el enlace que ha
-            sido enviado a tu email. ({email})
+            sido enviado a tu email. 
           </p>
         </CardContent>
+        <CardFooter>
+          <Button className='w-full' onClick={() => resendEmail(email)}>
+            Reenviar Email
+          </Button>
+        </CardFooter>
       </Card>
     </>
   );

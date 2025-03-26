@@ -4,9 +4,13 @@ import { cookies } from 'next/headers';
 export async function createClient() {
   const cookieStore = await cookies();
 
+  if(!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_SERVICE_ROLE_KEY) {
+    throw new Error('Missing environment variables');
+  }
+
   return createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_SERVER_ROLE_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_SERVICE_ROLE_KEY,
     {
       cookies: {
         getAll() {
