@@ -1,3 +1,5 @@
+"use client"
+
 import { plans } from '@/lib/contants';
 import { PlanCard } from '../_components/plan-card';
 
