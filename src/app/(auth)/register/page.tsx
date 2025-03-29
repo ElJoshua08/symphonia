@@ -50,12 +50,10 @@ export default function RegisterPage() {
 
   return (
     <main className="flex w-full grow flex-row items-stretch justify-normal">
-      {form.formState.isSubmitSuccessful && (
-        <SuccessCard
-          name={form.getValues().name}
-          email={form.getValues().email}
-        />
-      )}
+      <SuccessCard
+        name={form.getValues().name}
+        email={form.getValues().email}
+      />
 
       <section className="relative flex w-full flex-col items-center justify-center overflow-y-clip">
         <Card>
@@ -78,16 +76,15 @@ export default function RegisterPage() {
         <Link href="/register" className="mt-5">
           <Label variant="link">¿Ya tienes una cuenta?</Label>
         </Link>
-      </section>
-
-      {/* Decoration and phrase */}
-      <section className="relative hidden w-full flex-col items-start justify-center overflow-y-clip bg-primary px-16 lg:flex">
-        <div className="absolute left-0 top-0 -z-10 hidden h-[calc(100%+50px)] w-52 -translate-x-1/4 -translate-y-8 -rotate-3 bg-primary shadow-lg shadow-black dark:shadow-primary lg:block" />
-        <div className="flex items-center justify-center bg-primary">
-          <h1 className="mt-10 text-balance text-center font-header text-7xl text-secondary">
-            En cualquier lugar, En cualquier momento.
-          </h1>
-        </div>
+        {/* Decoration and phrase */}
+        <section className="relative hidden w-full flex-col items-start justify-center overflow-y-clip bg-primary px-16 lg:flex">
+          <div className="absolute left-0 top-0 -z-10 hidden h-[calc(100%+50px)] w-52 -translate-x-1/4 -translate-y-8 -rotate-3 bg-primary shadow-lg shadow-black dark:shadow-primary lg:block" />
+          <div className="flex items-center justify-center bg-primary">
+            <h1 className="mt-10 text-balance text-center font-header text-7xl text-secondary">
+              En cualquier lugar, En cualquier momento.
+            </h1>
+          </div>
+        </section>
       </section>
     </main>
   );
@@ -171,7 +168,6 @@ const RegisterForm = ({ form }: { form: UseFormReturn<registerType> }) => {
       </form>
     </Form>
   );
-
 };
 const SuccessCard = ({ name, email }: { name: string; email: string }) => {
   const cooldownTime = 30; // Segundos
@@ -201,8 +197,8 @@ const SuccessCard = ({ name, email }: { name: string; email: string }) => {
   return (
     <>
       {/* Overlay */}
-      <div className="absolute left-0 top-0 z-10 h-full w-full bg-black/50" />
-      <Card className="shadow-card-shadow/50 absolute left-1/2 top-1/2 z-[100] max-w-96 -translate-x-1/2 -translate-y-1/2 shadow-md">
+      <div className="absolute left-0 top-0 z-10 h-full w-full bg-black/50 fade-in-100" />
+      <Card className="absolute left-1/2 top-1/2 z-[100] max-w-96 -translate-x-1/2 -translate-y-1/2 shadow-md shadow-card-shadow/50 slide-in-from-bottom-10">
         <CardHeader>
           <CardTitle className="text-2xl">
             Hola {name}, Bienvenido a Symphonia!
