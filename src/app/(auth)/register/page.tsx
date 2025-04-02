@@ -66,6 +66,7 @@ export default function RegisterPage() {
           <CardFooter className="mt-4 flex flex-row items-end justify-between gap-x-8">
             <Button
               onClick={() => form.handleSubmit(onSubmit)()}
+              loadOnClick
               className="w-full"
             >
               Registrarse
@@ -169,6 +170,7 @@ const RegisterForm = ({ form }: { form: UseFormReturn<registerType> }) => {
     </Form>
   );
 };
+
 const SuccessCard = ({ name, email }: { name: string; email: string }) => {
   const cooldownTime = 30; // Segundos
   const [isDisabled, setIsDisabled] = useState(false);
@@ -215,6 +217,7 @@ const SuccessCard = ({ name, email }: { name: string; email: string }) => {
             disabled={isDisabled}
             className="w-full"
             onClick={handleResendEmail}
+            loadOnClick
           >
             {isDisabled ? `Reenviar en ${remainingTime}s` : 'Reenviar Email'}
           </Button>

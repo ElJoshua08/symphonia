@@ -4,8 +4,27 @@
 import { createClient } from '@/lib/utils/supabase/server';
 import {
   ResendParams,
+  SignInWithPasswordCredentials,
   SignUpWithPasswordCredentials,
 } from '@supabase/supabase-js';
+
+export async function login(
+  email: string,
+  password: string
+): Promise<{ error?: string }> {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  } as SignInWithPasswordCredentials);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  return {};
+}
 
 export async function register(
   name: string,

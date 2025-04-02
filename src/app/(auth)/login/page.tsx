@@ -20,11 +20,16 @@ import { Input } from '@/components/ui/input';
 import { InputPassword } from '@/components/ui/input-password';
 import { Label } from '@/components/ui/label';
 import { loginSchema, loginType } from '@/lib/schemas';
+import { login } from '@/services/auth.service';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const form = useForm<loginType>({
     resolver: zodResolver(loginSchema),
     values: {
@@ -34,22 +39,29 @@ export default function LoginPage() {
     mode: 'onChange',
   });
 
-  const onSubmit = (data: loginType) => {
-    console.log(data);
-  };
+  async function onSubmit({ email, password }: loginType) {
+    const { error } = await login(email, password);
+
+    if (error) {
+      toast.error(error);
+      return;
+    }
+
+    router.push('/app');
+  }
 
   return (
-    <main className="grow flex w-full flex-row justify-normal items-stretch">
+    <main className="flex w-full grow flex-row items-stretch justify-normal">
       {/* Decoration and phrase */}
-      <section className="w-full bg-primary hidden lg:flex justify-center items-start flex-col px-16  relative overflow-y-clip">
-        <div className="flex justify-center items-center z-10 bg-primary">
-          <h1 className="text-secondary text-7xl text-center text-balance mt-10 font-header">
+      <section className="relative hidden w-full flex-col items-start justify-center overflow-y-clip bg-primary px-16 lg:flex">
+        <div className="z-10 flex items-center justify-center bg-primary">
+          <h1 className="mt-10 text-balance text-center font-header text-7xl text-secondary">
             En cualquier lugar, con cualquier persona
           </h1>
         </div>
-        <div className="absolute top-0 right-0 h-[calc(100%+50px)] w-52 rotate-3 bg-primary shadow-lg shadow-black dark:shadow-primary translate-x-1/4 -translate-y-8 hidden lg:block -z-10" />
+        <div className="absolute right-0 top-0 -z-10 hidden h-[calc(100%+50px)] w-52 -translate-y-8 translate-x-1/4 rotate-3 bg-primary shadow-lg shadow-black dark:shadow-primary lg:block" />
       </section>
-      <section className="flex flex-col justify-center items-center w-full relative overflow-y-clip">
+      <section className="relative flex w-full flex-col items-center justify-center overflow-y-clip">
         <Card className="z-50">
           <CardHeader>
             <CardTitle className="text-xl">Inicia Sesión</CardTitle>
@@ -95,21 +107,21 @@ export default function LoginPage() {
               </form>
             </Form>
           </CardContent>
-          <CardFooter className="flex flex-row gap-x-8 items-end justify-between mt-4">
+          <CardFooter className="mt-4 flex flex-row items-end justify-between gap-x-8">
             <Link href="/forgot-password">
               <Label variant="link">¿Olvidaste tu contraseña?</Label>
             </Link>
 
-            <Button onClick={() => form.handleSubmit(onSubmit)()}>
+            <Button
+              loadOnClick
+              onClick={() => form.handleSubmit(onSubmit)()}
+            >
               Iniciar Sesión
             </Button>
           </CardFooter>
         </Card>
 
-        <Link
-          href="/register"
-          className="mt-5"
-        >
+        <Link href="/register" className="mt-5">
           <Label variant="link">¿Aun no tienes una cuenta?</Label>
         </Link>
       </section>

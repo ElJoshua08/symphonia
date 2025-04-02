@@ -42,7 +42,6 @@ export interface ButtonProps
   loading?: boolean;
   loadOnClick?: boolean;
 }
-
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -65,14 +64,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={loading || disabled}
         ref={ref}
         onClick={async (e) => {
-          loadOnClick && setLoading(true);
-          onClick && (await onClick(e));
+          if (loadOnClick) setLoading(true);
+          if (onClick) await onClick(e);
           setLoading(false);
         }}
         {...props}
       >
-        {children}
-        {loading && <LoaderCircle className="animate-spin" />}
+        <div className="relative flex h-full w-full items-center justify-center">
+          <span className={loading ? 'invisible' : 'visible'}>{children}</span>
+          {loading && (
+            <LoaderCircle className="absolute flex animate-spin items-center justify-center" />
+          )}
+        </div>
       </button>
     );
   }
