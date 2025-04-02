@@ -51,8 +51,7 @@ export default function RegisterPage() {
   return (
     <main className="flex w-full grow flex-row items-stretch justify-normal">
       <SuccessCard
-        name={form.getValues().name}
-        email={form.getValues().email}
+        form={form}
       />
 
       <section className="relative flex w-full flex-col items-center justify-center overflow-y-clip">
@@ -171,7 +170,7 @@ const RegisterForm = ({ form }: { form: UseFormReturn<registerType> }) => {
   );
 };
 
-const SuccessCard = ({ name, email }: { name: string; email: string }) => {
+const SuccessCard = ({ form }: { form: UseFormReturn<registerType> }) => {
   const cooldownTime = 30; // Segundos
   const [isDisabled, setIsDisabled] = useState(false);
   const [remainingTime, setRemainingTime] = useState(0);
@@ -191,12 +190,12 @@ const SuccessCard = ({ name, email }: { name: string; email: string }) => {
       return;
     }
 
-    resendEmail(email);
+    resendEmail(form.getValues().email);
     setIsDisabled(true);
     setRemainingTime(cooldownTime);
   };
 
-  if (!name || !email) return null;
+  if (!form.formState.isSubmitSuccessful) return null;
 
   return (
     <>
@@ -205,7 +204,7 @@ const SuccessCard = ({ name, email }: { name: string; email: string }) => {
       <Card className="absolute left-1/2 top-1/2 z-[100] max-w-96 -translate-x-1/2 -translate-y-1/2 shadow-md shadow-card-shadow/50 slide-in-from-bottom-10">
         <CardHeader>
           <CardTitle className="text-2xl">
-            Hola {name}, Bienvenido a Symphonia!
+            Hola {form.getValues().name}, Bienvenido a Symphonia!
           </CardTitle>
         </CardHeader>
         <CardContent>
