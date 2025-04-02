@@ -74,18 +74,18 @@ export default function RegisterPage() {
           </CardFooter>
         </Card>
 
-        <Link href="/register" className="mt-5">
+        <Link href="/login" className="mt-5">
           <Label variant="link">¿Ya tienes una cuenta?</Label>
         </Link>
-        {/* Decoration and phrase */}
-        <section className="relative hidden w-full flex-col items-start justify-center overflow-y-clip bg-primary px-16 lg:flex">
-          <div className="absolute left-0 top-0 -z-10 hidden h-[calc(100%+50px)] w-52 -translate-x-1/4 -translate-y-8 -rotate-3 bg-primary shadow-lg shadow-black dark:shadow-primary lg:block" />
-          <div className="flex items-center justify-center bg-primary">
-            <h1 className="mt-10 text-balance text-center font-header text-7xl text-secondary">
-              En cualquier lugar, En cualquier momento.
-            </h1>
-          </div>
-        </section>
+      </section>
+      {/* Decoration and phrase */}
+      <section className="relative hidden w-full flex-col items-start justify-center overflow-y-clip bg-primary px-16 lg:flex">
+        <div className="absolute left-0 top-0 -z-10 hidden h-[calc(100%+50px)] w-52 -translate-x-1/4 -translate-y-8 -rotate-3 bg-primary shadow-lg shadow-black dark:shadow-primary lg:block" />
+        <div className="flex items-center justify-center bg-primary">
+          <h1 className="mt-10 text-balance text-center font-header text-7xl text-secondary">
+            En cualquier lugar, En cualquier momento.
+          </h1>
+        </div>
       </section>
     </main>
   );
@@ -195,6 +195,8 @@ const SuccessCard = ({ name, email }: { name: string; email: string }) => {
     setIsDisabled(true);
     setRemainingTime(cooldownTime);
   };
+
+  if (!name || !email) return null;
 
   return (
     <>
